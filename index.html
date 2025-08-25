@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סקירת שוק הפרילנסרים ב-AI בישראל 2025-2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Stone neutrals with a muted Teal accent) -->
+    <!-- Application Structure Plan: A single-page dashboard with thematic sections (Overview, Rates, Projects, Salary Comparison, Recommendations) and sticky navigation. This non-linear structure allows users (freelancers/clients) to quickly jump to the information most relevant to them, facilitating comparison and decision-making better than a linear report. Key interactions include hover-to-view data on charts and clear visual grouping of related content. -->
+    <!-- Visualization & Content Choices: 1. Hourly Rates: Report data -> Goal: Compare roles -> Viz: Horizontal Bar Chart -> Interaction: Hover tooltips -> Justification: Clear visual comparison of categories -> Library: Chart.js. 2. Salaried Roles: Report data -> Goal: Compare salaries -> Viz: Vertical Bar Chart -> Interaction: Hover tooltips -> Justification: Standard for numerical comparison -> Library: Chart.js. 3. Specializations/Projects: Report data -> Goal: Inform/Organize -> Viz: Styled Cards (HTML/Tailwind) -> Interaction: Hover effects -> Justification: Visually engaging, allows for more text than a table. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Assistant', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #0d9488; /* teal-600 */
+            border-bottom-color: #0d9488;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-teal-700">שוק הפרילנסרים ב-AI</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
+                        <a href="#overview" class="nav-link text-stone-600 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">סקירה כללית</a>
+                        <a href="#rates" class="nav-link text-stone-600 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">תעריפים והשוואות</a>
+                        <a href="#salaries" class="nav-link text-stone-600 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">פרילנסר מול שכיר</a>
+                        <a href="#specialization" class="nav-link text-stone-600 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">התמחויות מומלצות</a>
+                        <a href="#recommendations" class="nav-link text-stone-600 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">תובנות אסטרטגיות</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <section id="overview" class="text-center mb-16 pt-16 -mt-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">כמה מרוויח פרילנסר AI בישראל?</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600 mb-8">
+                סקירה מקיפה של שוק הפרילנסרים בתחום הבינה המלאכותית לשנים 2025-2026. הנתונים מבוססים על ניתוח של מגוון מקורות ומטרתם לספק מדריך אסטרטגי לפרילנסרים וללקוחות כאחד.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-stone-200">
+                    <h3 class="text-lg font-semibold text-stone-500 mb-2">תעריף שעתי ממוצע (AI/ML)</h3>
+                    <p class="text-3xl font-bold text-teal-600">240 - 360 ₪</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border border-stone-200">
+                    <h3 class="text-lg font-semibold text-stone-500 mb-2">גידול בביקוש למומחי AI</h3>
+                    <p class="text-3xl font-bold text-teal-600">פי 2+</p>
+                    <span class="text-sm text-stone-500">(בהשוואה לשנה קודמת)</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border border-stone-200">
+                    <h3 class="text-lg font-semibold text-stone-500 mb-2">שכר שנתי (מומחה בכיר)</h3>
+                    <p class="text-3xl font-bold text-teal-600">עד 750,000 ₪</p>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="my-12 border-stone-200">
+
+        <section id="rates" class="mb-16 pt-16 -mt-16">
+            <h2 class="text-3xl font-bold text-center text-stone-900 mb-4">תעריפים והשוואות מחירים</h2>
+            <p class="max-w-3xl mx-auto text-center text-lg text-stone-600 mb-12">
+                כאן תוכלו להשוות בין תעריפים שעתיים של פרילנסרים בתחומי טכנולוגיה שונים ולבחון טווחי מחירים אופייניים לפרויקטים בתחום הבינה המלאכותית.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-semibold text-center mb-6">השוואת תעריפים שעתיים</h3>
+                    <div class="chart-container">
+                        <canvas id="hourlyRateChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-center mb-6">תמחור פרויקטים לדוגמה</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg shadow border border-stone-200">
+                            <h4 class="font-bold text-teal-700">פיתוח צ'אט-בוט מבוסס AI</h4>
+                            <p class="text-stone-600">אלפי עד עשרות אלפי שקלים, תלוי במורכבות ה-NLP והאינטגרציות.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow border border-stone-200">
+                            <h4 class="font-bold text-teal-700">פיתוח פתרון AI ייעודי (MVP)</h4>
+                            <p class="text-stone-600">החל מ-190,000 ₪, תלוי בגודל הנתונים ומורכבות המודל.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow border border-stone-200">
+                            <h4 class="font-bold text-teal-700">כלי AI ואינטגרציה ל-BI</h4>
+                            <p class="text-stone-600">5,000 - 10,000 ₪, תלוי בהיקף המשימה וסביבת הלקוח.</p>
+                        </div>
+                         <div class="bg-white p-4 rounded-lg shadow border border-stone-200">
+                            <h4 class="font-bold text-teal-700">כלי אוטומציה ותפעול</h4>
+                            <p class="text-stone-600">10,000 - 25,000 ₪, תלוי במורכבות הלוגיקה וכמות ה-APIs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-12 border-stone-200">
+
+        <section id="salaries" class="mb-16 pt-16 -mt-16">
+            <h2 class="text-3xl font-bold text-center text-stone-900 mb-4">פרילנסר מול שכיר: השוואת שכר</h2>
+             <p class="max-w-3xl mx-auto text-center text-lg text-stone-600 mb-12">
+                כדי לקבוע תעריף הוגן כפרילנסר, חשוב להבין את רמות השכר של עובדים שכירים בתפקידים מקבילים. גרף זה מציג את טווחי השכר החודשי הממוצע לתפקידי ליבה ב-AI.
+            </p>
+            <div class="chart-container" style="max-height: 60vh; height: 500px;">
+                <canvas id="employeeSalaryChart"></canvas>
+            </div>
+        </section>
+
+        <hr class="my-12 border-stone-200">
+
+        <section id="specialization" class="mb-16 pt-16 -mt-16">
+            <h2 class="text-3xl font-bold text-center text-stone-900 mb-4">תחומי התמחות למיקסום הכנסות</h2>
+            <p class="max-w-3xl mx-auto text-center text-lg text-stone-600 mb-12">
+                התמקדות בתחומי הליבה של בינה מלאכותית, הדורשים מומחיות ייחודית, היא המפתח להגדלת פוטנציאל ההשתכרות. אלו הם התחומים המתגמלים ביותר כיום.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300 border-t-4 border-teal-500">
+                    <div class="text-4xl mb-4">🔬</div>
+                    <h3 class="text-xl font-bold mb-2">חקר AI ופיתוח אלגוריתמים</h3>
+                    <p class="text-stone-600">דורש ידע אקדמי מעמיק במתמטיקה וסטטיסטיקה. התפקידים הבכירים בתחום מציעים את השכר הגבוה ביותר.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300 border-t-4 border-teal-500">
+                    <div class="text-4xl mb-4">👁️</div>
+                    <h3 class="text-xl font-bold mb-2">ראייה ממוחשבת (Computer Vision)</h3>
+                    <p class="text-stone-600">תחום עם ביקוש גבוה למומחים המסוגלים לפתח מערכות זיהוי אוטומטי וניתוח תמונה מתקדמות.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300 border-t-4 border-teal-500">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="text-xl font-bold mb-2">מודלי שפה ו-NLP</h3>
+                    <p class="text-stone-600">עם העלייה בפתרונות מבוססי שפה (LLMs), מומחי עיבוד שפה טבעית נהנים מביקוש ושכר גבוהים.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-12 border-stone-200">
+
+        <section id="recommendations" class="pt-16 -mt-16">
+            <h2 class="text-3xl font-bold text-center text-stone-900 mb-4">תובנות אסטרטגיות והמלצות</h2>
+             <p class="max-w-3xl mx-auto text-center text-lg text-stone-600 mb-12">
+                ריכוז המלצות מפתח לפרילנסרים המעוניינים למקסם את הכנסותיהם, וללקוחות השואפים לנהל את תקציבי הפיתוח שלהם ביעילות.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-teal-600">
+                    <h3 class="text-2xl font-bold mb-4">המלצות לפרילנסר ה-AI</h3>
+                    <ul class="list-disc list-inside space-y-3 text-stone-700">
+                        <li><strong>תמחור אסטרטגי:</strong> קבעו תעריף שעתי הגבוה משמעותית מהמקבילה לשכיר כדי לכסות עלויות נלוות (מסים, פנסיה, ציוד וזמן ללא עבודה). תעריף של 240-360 ₪ לשעה הוא נקודת פתיחה הולמת.</li>
+                        <li><strong>התמחות ומיקוד:</strong> שאפו להתמחות בתחומי ביקוש גבוה כמו LLMs, ראייה ממוחשבת או פיתוח אלגוריתמים. מומחיות תתגמל אתכם כלכלית יותר מפיתוח כללי.</li>
+                        <li><strong>אימוץ אוטומציה:</strong> השתמשו בכלי Agentic AI כדי לשפר פרודוקטיביות במשימות בסיסיות, והתמקדו במתן ערך אסטרטגי מורכב שהלקוח מוכן לשלם עליו יותר.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500">
+                    <h3 class="text-2xl font-bold mb-4">המלצות למגייסים וללקוחות</h3>
+                    <ul class="list-disc list-inside space-y-3 text-stone-700">
+                        <li><strong>הבנת העלויות המלאות:</strong> עלויות פיתוח AI כוללות הרבה מעבר לשכר. יש לתקצב איסוף וסימון נתונים, תשתיות מחשוב יקרות ותחזוקה שוטפת.</li>
+                        <li><strong>החלטת העסקה מושכלת:</strong> פרילנסר הוא פתרון מעולה לפרויקטים נקודתיים ומהירים. לפרויקטים ארוכי טווח ומורכבים הדורשים מעטפת מלאה (QA, ניהול מוצר), שקלו צוות פנימי או חברת פיתוח.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-800 text-white mt-16">
+        <div class="container mx-auto py-6 px-4 text-center text-stone-400">
+            <p>&copy; 2025-2026 סקירת שוק הפרילנסרים ב-AI. הנתונים מבוססים על ניתוח סינתטי של מקורות מידע גלויים.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chartFont = {
+                family: 'Assistant',
+            };
+
+            const hourlyRateData = {
+                labels: ['מפתח אפליקציות', 'מתכנת AI/ML/Python', 'מעצב UI/UX', 'מפתח וורדפרס', 'מקדם אתרים (SEO)', 'מנהל סושיאל', 'כותב תוכן'],
+                datasets: [{
+                    label: 'טווח תעריפים לשעה (ש"ח)',
+                    data: [[400, 1100], [240, 360], [100, 500], [180, 280], [200, 200], [70, 200], [60, 300]],
+                    backgroundColor: 'rgba(13, 148, 136, 0.6)',
+                    borderColor: 'rgba(13, 148, 136, 1)',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    borderSkipped: false,
+                }]
+            };
+
+            const hourlyRateCtx = document.getElementById('hourlyRateChart').getContext('2d');
+            new Chart(hourlyRateCtx, {
+                type: 'bar',
+                data: hourlyRateData,
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            bodyFont: chartFont,
+                            titleFont: chartFont,
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.raw;
+                                    if (value[0] === value[1]) {
+                                        return `תעריף: ${value[0]} ₪`;
+                                    }
+                                    return `טווח: ${value[0]} - ${value[1]} ₪`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'תעריף בש"ח',
+                                font: {...chartFont, weight: 'bold', size: 14}
+                            },
+                            ticks: { font: chartFont }
+                        },
+                        y: {
+                            ticks: { font: {...chartFont, size: 12} }
+                        }
+                    }
+                }
+            });
+
+            const employeeSalaryData = {
+                labels: ['מנהל מוצר AI', 'מומחה ראייה ממוחשבת', 'מהנדס NLP', 'חוקר AI', 'מהנדס למידת מכונה', 'מדען נתונים', 'מפתח אלגוריתמים'],
+                datasets: [{
+                    label: 'שכר חודשי ממוצע (ש"ח)',
+                    data: [[35000, 60000], [30000, 55000], [27000, 50000], [32000, 52000], [28000, 48000], [25000, 45000], [20000, 45000]],
+                    backgroundColor: 'rgba(249, 115, 22, 0.6)',
+                    borderColor: 'rgba(249, 115, 22, 1)',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    borderSkipped: false,
+                }]
+            };
+
+            const employeeSalaryCtx = document.getElementById('employeeSalaryChart').getContext('2d');
+            new Chart(employeeSalaryCtx, {
+                type: 'bar',
+                data: employeeSalaryData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        tooltip: {
+                            bodyFont: chartFont,
+                            titleFont: chartFont,
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.raw;
+                                    return `טווח: ${value[0].toLocaleString()} - ${value[1].toLocaleString()} ₪`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'שכר חודשי ברוטו (ש"ח)',
+                                font: {...chartFont, weight: 'bold', size: 14}
+                            },
+                            ticks: {
+                                font: chartFont,
+                                callback: function(value) {
+                                    return value.toLocaleString();
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: { 
+                                font: {...chartFont, size: 12},
+                                maxRotation: 45,
+                                minRotation: 0
+                            }
+                        }
+                    }
+                }
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 80) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
